@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>E-commerce Hiring Coders</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/js/bootstrap.min.js">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <script>
+        function saveClientes() {
+            let nome = document.getElementById("nome").value
+            let cpf = document.getElementById("cpf").value
+            let email = document.getElementById("email").value
+            let telefone = document.getElementById("telefone").value
+
+            if (nome == "" || cpf == "" || email == "" || telefone == ""){
+                alert("Preencha todos os campos!")
+                return
+            }
+
+            let listaClientes = window.localStorage.getItem("clientes")
+            let leadExist = false
+
+    
+
+            if (listaClientes != null) {
+
+                listaClientes = JSON.parse(listaClientes)
+                let index = -1
+                for (var i = 0; i < listaClientes.length; i++ ){
+                    if (listaClientes[i].cpf == cpf) {
+                        index = i
+                    }
+
+                }
+
+                if (index >= 0) {
+                    leadExist = true
+                }
+
+            } else {
+                listaClientes = []
+            }
+
+            if (leadExist == false) {
+
+                let cliente = {
+                    nome: nome,
+                    cpf: cpf,
+                    email: email,
+                    telefone: telefone
+                }
+
+                listaClientes.push(cliente)
+                
+                window.localStorage.setItem("clientes", JSON.stringify(listaClientes)) 
+
+                window.alert("Cliente cadastrado com sucesso!")
+
+            } else {
+                window.alert("Cliente já cadastrado!")
+            }
+
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand">Sistema para Gerenciamento de Clientes e Produtos</a>
+            </div>
+        </nav>   
+    </header>
+    
+    <div class="espaco1">
+        <img src="img/imagem.jpg" alt="Logo" width="100" height="100">
+    </div>
+
+    <div class="container email" id="cadastrar">
+        <div class="row justify-content-center">
+            <div class="col-xs-6 col-md-6">
+                <form>
+                    <p class="paragrafo">Cadastramento de novo cliente</p>
+    
+                    <div class="form-floating">
+                      <input type="nome" class="form-control" id="nome" placeholder="name">
+                      <label for="nome">Nome:</label>
+                    </div>
+                    <br>
+                    <div class="form-floating">
+                        <input type="cpf" class="form-control" id="cpf" placeholder="CPF">
+                        <label for="cpf">CPF:</label>
+                    </div>
+                    <br>
+                    <div class="form-floating">
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                        <label for="email">E-mail:</label>
+                    </div>
+                    <br>
+                    <div class="form-floating">
+                        <input type="telefone" class="form-control" id="telefone" placeholder="telefone">
+                        <label for="telefone">Telefone:</label>
+                    </div>
+                    <br>
+                    <button class="btn btn-lg btn-dark" type="button" onclick="saveClientes()">Cadastrar</button>
+                    <a href="./lista-produtos.html"><button class="btn btn-lg btn-dark" type="button">Voltar</button></a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer id="desenvolvimento">
+        <p class="desenvolvimento"><a style="color: rebeccapurple;" href="https://www.linkedin.com/in/aline-viana-232973204/" target="blank">&copy; Desenvolvido por Aline Viana</p></a>
+    </footer>
+
+</body>
+
+
+</html>
+
+
+

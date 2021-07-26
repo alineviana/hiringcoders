@@ -1,0 +1,41 @@
+
+body {
+    background-color: thistle;
+}
+
+nav {
+    margin-bottom: 30px;
+}
+
+.espaco{
+    margin-top: 70px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.espaco1 {
+    margin-top: 70px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 76px;
+}
+
+.container {
+    text-align: center;
+}
+
+.paragrafo {
+    font-size: 23px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.desenvolvimento {
+    margin-top: 140px;
+    color: transparent;
+}
